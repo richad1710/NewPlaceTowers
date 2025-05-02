@@ -36,7 +36,6 @@ local TowerIcon = Instance.new("ImageLabel")
 local Tower_2 = Instance.new("TextLabel")
 local Skin_2 = Instance.new("TextLabel")
 local Top_2 = Instance.new("TextLabel")
-local Skin_3 = Instance.new("TextLabel")
 
 --Properties:
 
@@ -146,7 +145,7 @@ Line.Size = UDim2.new(0, 534, 0, 1)
 Regular.Name = "Regular"
 Regular.Parent = Bottom
 Regular.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Regular.BackgroundTransparency = 0.950
+Regular.BackgroundTransparency = 1.000
 Regular.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Regular.BorderSizePixel = 0
 Regular.Position = UDim2.new(0.323943347, 0, 0.43342036, 0)
@@ -292,7 +291,7 @@ Frame.Size = UDim2.new(0, 199, 0, 1)
 Main.Name = "Main"
 Main.Parent = TowerInfo
 Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Main.BackgroundTransparency = 0.950
+Main.BackgroundTransparency = 1.000
 Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Main.BorderSizePixel = 0
 Main.Position = UDim2.new(0.0572687238, 0, 0.100000001, 0)
@@ -306,7 +305,7 @@ TowerIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TowerIcon.BorderSizePixel = 0
 TowerIcon.Position = UDim2.new(0.00260986318, 0, 0.0917076319, 0)
 TowerIcon.Size = UDim2.new(0, 200, 0, 200)
-TowerIcon.Image = "rbxassetid://17276582919"
+TowerIcon.Image = "rbxassetid://114134096038917"
 TowerIcon.ScaleType = Enum.ScaleType.Crop
 
 Tower_2.Name = "Tower"
@@ -318,7 +317,7 @@ Tower_2.BorderSizePixel = 0
 Tower_2.Position = UDim2.new(0, 0, 0.651351333, 0)
 Tower_2.Size = UDim2.new(0, 200, 0, 26)
 Tower_2.Font = Enum.Font.Unknown
-Tower_2.Text = "Military Base"
+Tower_2.Text = "[Tower]"
 Tower_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 Tower_2.TextScaled = true
 Tower_2.TextSize = 14.000
@@ -353,32 +352,17 @@ Top_2.TextScaled = true
 Top_2.TextSize = 14.000
 Top_2.TextWrapped = true
 
-Skin_3.Name = "Skin"
-Skin_3.Parent = Main
-Skin_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Skin_3.BackgroundTransparency = 1.000
-Skin_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Skin_3.BorderSizePixel = 0
-Skin_3.Position = UDim2.new(0, 0, 0.816993594, 0)
-Skin_3.Size = UDim2.new(0, 200, 0, 22)
-Skin_3.Font = Enum.Font.Unknown
-Skin_3.Text = "[Description]"
-Skin_3.TextColor3 = Color3.fromRGB(255, 255, 255)
-Skin_3.TextScaled = true
-Skin_3.TextSize = 14.000
-Skin_3.TextWrapped = true
-
 -- Scripts:
 
-local function NDYEB_fake_script() -- X.LocalScript 
+local function TKLGBEO_fake_script() -- X.LocalScript 
 	local script = Instance.new('LocalScript', X)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(NDYEB_fake_script)()
-local function CDBKUJA_fake_script() -- Place.LocalScript 
+coroutine.wrap(TKLGBEO_fake_script)()
+local function UGEZFC_fake_script() -- Place.LocalScript 
 	local script = Instance.new('LocalScript', Place)
 
 	-- stop reading this u will steal my code noooooooooo
@@ -421,39 +405,48 @@ local function CDBKUJA_fake_script() -- Place.LocalScript
 	end)
 	
 end
-coroutine.wrap(CDBKUJA_fake_script)()
-local function DSCTJP_fake_script() -- Main.LocalScript 
+coroutine.wrap(UGEZFC_fake_script)()
+local function BEKZKT_fake_script() -- Main.LocalScript 
 	local script = Instance.new('LocalScript', Main)
 
 	print("Hello world!")
 	
 end
-coroutine.wrap(DSCTJP_fake_script)()
-local function FRHSM_fake_script() -- TowerInfo.Detector 
+coroutine.wrap(BEKZKT_fake_script)()
+local function ULAKVO_fake_script() -- TowerInfo.Detector 
 	local script = Instance.new('LocalScript', TowerInfo)
 
 	local tower = script.Parent.Parent.Bottom.Regular.Tower.Box
 	local skin = script.Parent.Parent.Bottom.Regular.Skin.Box
+	-- require(game:GetService("ReplicatedStorage").Resources.Icons)
 	
 	tower:GetPropertyChangedSignal("Text"):Connect(function()
-		skin:GetPropertyChangedSignal("Text"):Connect(function()
-			local icons = require(game:GetService("ReplicatedStorage").Resources.Icons)
-			local image = script.Parent.Main.TowerIcon
-			-- image.Image = icons.Towers[tower.Text]["Default"]
-			if icons.Towers[tower.Text] ~= nil then
-				if skin.Text == "" then
-					image.Image = icons.Towers[tower.Text]["Default"]
-				else
-					image.Image = icons.Towers[tower.Text][skin.Text]
-				end
+		local icons = require(game:GetService("ReplicatedStorage").Resources.Icons)
+		local image = script.Parent.Main.TowerIcon
+		-- image.Image = icons.Towers[tower.Text]["Default"]
+		local towertext = image.Parent.Tower
+		local skintext = image.Parent.Skin
+		local description = image.Parent.Desc
+		local stats = game:GetService("ReplicatedStorage").Content.Tower
+		if icons.Towers[tower.Text] ~= nil then
+			if skin.Text == "" then
+				image.Image = icons.Towers[tower.Text]["Default"]
+				towertext.Text = tower.Text
+				skintext.Text = "Default"
 			else
-				return
+				skin:GetPropertyChangedSignal("Text"):Connect(function()
+					image.Image = icons.Towers[tower.Text][skin.Text]
+					towertext.Text = tower.Text
+					skintext.Text = skin.Text
+				end)
 			end
-		end)
+		else
+			return
+		end
 	end)
 end
-coroutine.wrap(FRHSM_fake_script)()
-local function JFRKTP_fake_script() -- Top.Drag 
+coroutine.wrap(ULAKVO_fake_script)()
+local function CIPM_fake_script() -- Top.Drag 
 	local script = Instance.new('LocalScript', Top)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -496,4 +489,4 @@ local function JFRKTP_fake_script() -- Top.Drag
 		end
 	end)
 end
-coroutine.wrap(JFRKTP_fake_script)()
+coroutine.wrap(CIPM_fake_script)()
