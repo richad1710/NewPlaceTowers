@@ -354,15 +354,15 @@ Top_2.TextWrapped = true
 
 -- Scripts:
 
-local function TKLGBEO_fake_script() -- X.LocalScript 
+local function LQNNHJN_fake_script() -- X.LocalScript 
 	local script = Instance.new('LocalScript', X)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(TKLGBEO_fake_script)()
-local function UGEZFC_fake_script() -- Place.LocalScript 
+coroutine.wrap(LQNNHJN_fake_script)()
+local function CITVLQ_fake_script() -- Place.LocalScript 
 	local script = Instance.new('LocalScript', Place)
 
 	-- stop reading this u will steal my code noooooooooo
@@ -405,15 +405,15 @@ local function UGEZFC_fake_script() -- Place.LocalScript
 	end)
 	
 end
-coroutine.wrap(UGEZFC_fake_script)()
-local function BEKZKT_fake_script() -- Main.LocalScript 
+coroutine.wrap(CITVLQ_fake_script)()
+local function CFRTLGB_fake_script() -- Main.LocalScript 
 	local script = Instance.new('LocalScript', Main)
 
 	print("Hello world!")
 	
 end
-coroutine.wrap(BEKZKT_fake_script)()
-local function ULAKVO_fake_script() -- TowerInfo.Detector 
+coroutine.wrap(CFRTLGB_fake_script)()
+local function EKALO_fake_script() -- TowerInfo.Detector 
 	local script = Instance.new('LocalScript', TowerInfo)
 
 	local tower = script.Parent.Parent.Bottom.Regular.Tower.Box
@@ -426,7 +426,6 @@ local function ULAKVO_fake_script() -- TowerInfo.Detector
 		-- image.Image = icons.Towers[tower.Text]["Default"]
 		local towertext = image.Parent.Tower
 		local skintext = image.Parent.Skin
-		local description = image.Parent.Desc
 		local stats = game:GetService("ReplicatedStorage").Content.Tower
 		if icons.Towers[tower.Text] ~= nil then
 			if skin.Text == "" then
@@ -445,8 +444,8 @@ local function ULAKVO_fake_script() -- TowerInfo.Detector
 		end
 	end)
 end
-coroutine.wrap(ULAKVO_fake_script)()
-local function CIPM_fake_script() -- Top.Drag 
+coroutine.wrap(EKALO_fake_script)()
+local function UOVYGK_fake_script() -- Top.Drag 
 	local script = Instance.new('LocalScript', Top)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -489,4 +488,4 @@ local function CIPM_fake_script() -- Top.Drag
 		end
 	end)
 end
-coroutine.wrap(CIPM_fake_script)()
+coroutine.wrap(UOVYGK_fake_script)()
