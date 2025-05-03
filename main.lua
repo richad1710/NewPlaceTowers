@@ -146,7 +146,7 @@ Line.Size = UDim2.new(0, 534, 0, 1)
 Regular.Name = "Regular"
 Regular.Parent = Bottom
 Regular.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Regular.BackgroundTransparency = 0.950
+Regular.BackgroundTransparency = 1.000
 Regular.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Regular.BorderSizePixel = 0
 Regular.Position = UDim2.new(0.0774644688, 0, 0.417754561, 0)
@@ -330,7 +330,7 @@ Tower_2.BackgroundTransparency = 1.000
 Tower_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Tower_2.BorderSizePixel = 0
 Tower_2.Position = UDim2.new(0, 0, 0.651351333, 0)
-Tower_2.Size = UDim2.new(0, 200, 0, 26)
+Tower_2.Size = UDim2.new(0, 200, 0, 38)
 Tower_2.Font = Enum.Font.Unknown
 Tower_2.Text = "[Tower]"
 Tower_2.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -344,8 +344,8 @@ Skin_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Skin_2.BackgroundTransparency = 1.000
 Skin_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Skin_2.BorderSizePixel = 0
-Skin_2.Position = UDim2.new(0, 0, 0.737837851, 0)
-Skin_2.Size = UDim2.new(0, 200, 0, 22)
+Skin_2.Position = UDim2.new(0, 0, 0.753669024, 0)
+Skin_2.Size = UDim2.new(0, 200, 0, 32)
 Skin_2.Font = Enum.Font.Unknown
 Skin_2.Text = "[Skin]"
 Skin_2.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -369,15 +369,15 @@ Top_2.TextWrapped = true
 
 -- Scripts:
 
-local function IVXB_fake_script() -- X.LocalScript 
+local function MKCJDV_fake_script() -- X.LocalScript 
 	local script = Instance.new('LocalScript', X)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(IVXB_fake_script)()
-local function OVEQJW_fake_script() -- Minimize.LocalScript 
+coroutine.wrap(MKCJDV_fake_script)()
+local function ZPDPS_fake_script() -- Minimize.LocalScript 
 	local script = Instance.new('LocalScript', Minimize)
 
 	local bottom = script.Parent.Parent.Bottom
@@ -393,8 +393,8 @@ local function OVEQJW_fake_script() -- Minimize.LocalScript
 		end
 	end)
 end
-coroutine.wrap(OVEQJW_fake_script)()
-local function VBQWO_fake_script() -- Place.LocalScript 
+coroutine.wrap(ZPDPS_fake_script)()
+local function NIQQ_fake_script() -- Place.LocalScript 
 	local script = Instance.new('LocalScript', Place)
 
 	-- stop reading this u will steal my code noooooooooo
@@ -405,17 +405,31 @@ local function VBQWO_fake_script() -- Place.LocalScript
 		local Tower = script.Parent.Parent.Tower.Box.Text
 		local Skin = script.Parent.Parent.Skin.Box.Text
 	
-		function Stream(v1, v2)
-			local args = {
-				[1] = "Streaming",
-				[2] = "SelectTower",
-				[3] = v2, -- Tower
-				[4] = v1 -- Skin
-			}
+		if Skin == "" then
+			function Stream(v1, v2)
+				local args = {
+					[1] = "Streaming",
+					[2] = "SelectTower",
+					[3] = v2, -- Tower
+					[4] = v1 -- Skin
+				}
 	
-			game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+				game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+			end
+			Stream(Skin, Tower)
+		else
+			function Stream(v1, v2)
+				local args = {
+					[1] = "Streaming",
+					[2] = "SelectTower",
+					[3] = v2, -- Tower
+					[4] = v1 -- Skin
+				}
+	
+				game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+			end
+			Stream("Default", Tower)
 		end
-		Stream(Skin, Tower)
 	
 		local u13 = require(v2.Resources.Universal.Asset)
 		v148 = u13("Troops", Tower)
@@ -450,8 +464,8 @@ local function VBQWO_fake_script() -- Place.LocalScript
 	end)
 	
 end
-coroutine.wrap(VBQWO_fake_script)()
-local function HNYJIDN_fake_script() -- Top.Drag 
+coroutine.wrap(NIQQ_fake_script)()
+local function WOXO_fake_script() -- Top.Drag 
 	local script = Instance.new('LocalScript', Top)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -494,15 +508,15 @@ local function HNYJIDN_fake_script() -- Top.Drag
 		end
 	end)
 end
-coroutine.wrap(HNYJIDN_fake_script)()
-local function DRFNFZT_fake_script() -- Main.LocalScript 
+coroutine.wrap(WOXO_fake_script)()
+local function TUFE_fake_script() -- Main.LocalScript 
 	local script = Instance.new('LocalScript', Main)
 
 	print("Hello world!")
 	
 end
-coroutine.wrap(DRFNFZT_fake_script)()
-local function OPLNXGW_fake_script() -- TowerInfo.Detector 
+coroutine.wrap(TUFE_fake_script)()
+local function PWPFDSA_fake_script() -- TowerInfo.Detector 
 	local script = Instance.new('LocalScript', TowerInfo)
 
 	local tower = script.Parent.Parent.Bottom.Regular.Tower.Box
@@ -533,4 +547,4 @@ local function OPLNXGW_fake_script() -- TowerInfo.Detector
 		end
 	end)
 end
-coroutine.wrap(OPLNXGW_fake_script)()
+coroutine.wrap(PWPFDSA_fake_script)()
