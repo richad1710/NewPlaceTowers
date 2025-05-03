@@ -27,6 +27,7 @@ local O = Instance.new("TextLabel")
 local Place = Instance.new("TextButton")
 local UICorner_7 = Instance.new("UICorner")
 local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
 local TowerInfo = Instance.new("Frame")
 local UICorner_8 = Instance.new("UICorner")
 local Title_2 = Instance.new("TextLabel")
@@ -145,10 +146,10 @@ Line.Size = UDim2.new(0, 534, 0, 1)
 Regular.Name = "Regular"
 Regular.Parent = Bottom
 Regular.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Regular.BackgroundTransparency = 1.000
+Regular.BackgroundTransparency = 0.950
 Regular.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Regular.BorderSizePixel = 0
-Regular.Position = UDim2.new(0.323943347, 0, 0.43342036, 0)
+Regular.Position = UDim2.new(0.0774644688, 0, 0.417754561, 0)
 Regular.Size = UDim2.new(0, 200, 0, 201)
 
 Tower.Name = "Tower"
@@ -255,6 +256,20 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14.000
 TextLabel.TextWrapped = true
 
+TextLabel_2.Parent = Regular
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(1.17499995, 0, 0.0149253728, 0)
+TextLabel_2.Size = UDim2.new(0, 264, 0, 198)
+TextLabel_2.Font = Enum.Font.Unknown
+TextLabel_2.Text = "Just a reminder, if you wonder where all the skins are go to this path: ReplicatedStorage -> Resources -> Icons. "
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
 TowerInfo.Name = "TowerInfo"
 TowerInfo.Parent = Top
 TowerInfo.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
@@ -354,15 +369,32 @@ Top_2.TextWrapped = true
 
 -- Scripts:
 
-local function LQNNHJN_fake_script() -- X.LocalScript 
+local function IVXB_fake_script() -- X.LocalScript 
 	local script = Instance.new('LocalScript', X)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.Parent:Destroy()
 	end)
 end
-coroutine.wrap(LQNNHJN_fake_script)()
-local function CITVLQ_fake_script() -- Place.LocalScript 
+coroutine.wrap(IVXB_fake_script)()
+local function OVEQJW_fake_script() -- Minimize.LocalScript 
+	local script = Instance.new('LocalScript', Minimize)
+
+	local bottom = script.Parent.Parent.Bottom
+	local towerinfo = script.Parent.Parent.TowerInfo
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if bottom.Visible == true and towerinfo.Visible == true then
+			bottom.Visible = false
+			towerinfo.Visible = false
+		elseif bottom.Visible == false and towerinfo.Visible == false then
+			bottom.Visible = true
+			towerinfo.Visible = true
+		end
+	end)
+end
+coroutine.wrap(OVEQJW_fake_script)()
+local function VBQWO_fake_script() -- Place.LocalScript 
 	local script = Instance.new('LocalScript', Place)
 
 	-- stop reading this u will steal my code noooooooooo
@@ -393,59 +425,33 @@ local function CITVLQ_fake_script() -- Place.LocalScript
 	
 		local v150 = (towerstat.Stats.Golden and towerstat.Stats.Golden.Defaults) or towerstat.Stats.Default.Defaults
 	
-		u7:Start({
-			["Name"] = Tower,
-			["Class"] = u13("Troops", Tower).Properties.Class,
-			["Asset"] = u13("Troops", Tower),
-			["Model"] = u13("TroopsModel", Tower, Skin),
-			["Range"] = v150.Range,
-			["Deadzone"] = v150.Attributes and (v150.Attributes.Deadzone or 0) or 0,
-			["Buildzone"] = v150.Attributes and (v150.Attributes.Buildzone or 0) or 0
-		})
-	end)
-	
-end
-coroutine.wrap(CITVLQ_fake_script)()
-local function CFRTLGB_fake_script() -- Main.LocalScript 
-	local script = Instance.new('LocalScript', Main)
-
-	print("Hello world!")
-	
-end
-coroutine.wrap(CFRTLGB_fake_script)()
-local function EKALO_fake_script() -- TowerInfo.Detector 
-	local script = Instance.new('LocalScript', TowerInfo)
-
-	local tower = script.Parent.Parent.Bottom.Regular.Tower.Box
-	local skin = script.Parent.Parent.Bottom.Regular.Skin.Box
-	-- require(game:GetService("ReplicatedStorage").Resources.Icons)
-	
-	tower:GetPropertyChangedSignal("Text"):Connect(function()
-		local icons = require(game:GetService("ReplicatedStorage").Resources.Icons)
-		local image = script.Parent.Main.TowerIcon
-		-- image.Image = icons.Towers[tower.Text]["Default"]
-		local towertext = image.Parent.Tower
-		local skintext = image.Parent.Skin
-		local stats = game:GetService("ReplicatedStorage").Content.Tower
-		if icons.Towers[tower.Text] ~= nil then
-			if skin.Text == "" then
-				image.Image = icons.Towers[tower.Text]["Default"]
-				towertext.Text = tower.Text
-				skintext.Text = "Default"
-			else
-				skin:GetPropertyChangedSignal("Text"):Connect(function()
-					image.Image = icons.Towers[tower.Text][skin.Text]
-					towertext.Text = tower.Text
-					skintext.Text = skin.Text
-				end)
-			end
+		if Skin == "" then
+			Skin = "Default"
+			u7:Start({
+				["Name"] = Tower,
+				["Class"] = u13("Troops", Tower).Properties.Class,
+				["Asset"] = u13("Troops", Tower),
+				["Model"] = u13("TroopsModel", Tower, Skin),
+				["Range"] = v150.Range,
+				["Deadzone"] = v150.Attributes and (v150.Attributes.Deadzone or 0) or 0,
+				["Buildzone"] = v150.Attributes and (v150.Attributes.Buildzone or 0) or 0
+			})
 		else
-			return
+			u7:Start({
+				["Name"] = Tower,
+				["Class"] = u13("Troops", Tower).Properties.Class,
+				["Asset"] = u13("Troops", Tower),
+				["Model"] = u13("TroopsModel", Tower, Skin),
+				["Range"] = v150.Range,
+				["Deadzone"] = v150.Attributes and (v150.Attributes.Deadzone or 0) or 0,
+				["Buildzone"] = v150.Attributes and (v150.Attributes.Buildzone or 0) or 0
+			})
 		end
 	end)
+	
 end
-coroutine.wrap(EKALO_fake_script)()
-local function UOVYGK_fake_script() -- Top.Drag 
+coroutine.wrap(VBQWO_fake_script)()
+local function HNYJIDN_fake_script() -- Top.Drag 
 	local script = Instance.new('LocalScript', Top)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -488,4 +494,43 @@ local function UOVYGK_fake_script() -- Top.Drag
 		end
 	end)
 end
-coroutine.wrap(UOVYGK_fake_script)()
+coroutine.wrap(HNYJIDN_fake_script)()
+local function DRFNFZT_fake_script() -- Main.LocalScript 
+	local script = Instance.new('LocalScript', Main)
+
+	print("Hello world!")
+	
+end
+coroutine.wrap(DRFNFZT_fake_script)()
+local function OPLNXGW_fake_script() -- TowerInfo.Detector 
+	local script = Instance.new('LocalScript', TowerInfo)
+
+	local tower = script.Parent.Parent.Bottom.Regular.Tower.Box
+	local skin = script.Parent.Parent.Bottom.Regular.Skin.Box
+	-- require(game:GetService("ReplicatedStorage").Resources.Icons)
+	
+	tower:GetPropertyChangedSignal("Text"):Connect(function()
+		local icons = require(game:GetService("ReplicatedStorage").Resources.Icons)
+		local image = script.Parent.Main.TowerIcon
+		-- image.Image = icons.Towers[tower.Text]["Default"]
+		local towertext = image.Parent.Tower
+		local skintext = image.Parent.Skin
+		local stats = game:GetService("ReplicatedStorage").Content.Tower
+		if icons.Towers[tower.Text] ~= nil then
+			if skin.Text == "" then
+				image.Image = icons.Towers[tower.Text]["Default"]
+				towertext.Text = tower.Text
+				skintext.Text = "Default"
+			else
+				skin:GetPropertyChangedSignal("Text"):Connect(function()
+					image.Image = icons.Towers[tower.Text][skin.Text]
+					towertext.Text = tower.Text
+					skintext.Text = skin.Text
+				end)
+			end
+		else
+			return
+		end
+	end)
+end
+coroutine.wrap(OPLNXGW_fake_script)()
